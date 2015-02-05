@@ -16,7 +16,7 @@
 <body>
     <div class="container">
       <div class="jumbotron">
-        <h1>Going old school techie.  Look out, Matt is on a role with mad Twitter Bootstrap, JavaScript, and Ajax skills!</h1>
+        <h1>Going old school techie.  Look out, Matt is on a role with mad GitHub, Twitter Bootstrap, JavaScript, and Ajax skills!</h1>
       <a href="https://instagram.com/oauth/authorize/?client_id=f389f34a6e1f4674b0a27d015ef4294d&redirect_uri=http://matthughesmn.github.io/feedme/&response_type=token"><button class="btn btn-primary btn-lg">Log In with <i class="fa fa-instagram"></i> Instagram</button></a>
       </div>
       
@@ -40,18 +40,34 @@
               myToken = myToken[1];
               console.log(myToken);
               
-              $.ajax({
-                type: 'GET',
-                url: "https://api.instagram.com/v1/users/self/feed?access_token=" + myToken,
-                dataType: 'jsonp',
-                success: function(data) {
-                  console.log("Data has been loaded from Instagram"); 
-                  console.log(data);
-                },
-                error:  function(error) {
-                  console.log(error);
+              function createHtml (data) {
+                console.log("createHtml function fired");
+                data = data.data; 
+                for (var i = 0; i < data.length; i++) {
+                  console.log(data[i]);
+                  var image = data[i].images.standard_resolution.url;
+                  console.log('<img src='" + image = '"/>');
+                  imageHolder.append(data[i]);
                 }
-              });
+                
+              }
+              
+              function getData () {
+                  $.ajax({
+                    type: 'GET',
+                    url: "https://api.instagram.com/v1/users/self/feed?access_token=" + myToken,
+                    dataType: 'jsonp',
+                    success: function(json) {
+                      console.log("Data has been loaded from Instagram"); 
+                      createHtml(json);
+                    },
+                    error:  function(error) {
+                      console.log(error);
+                    }
+                  });
+              }
+              
+              getData();
          });
       </script>
 </body>
