@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html>
 <head>
   <!-- Link to load Font Awesome Icon set from CDN -->
@@ -16,7 +16,7 @@
 <body>
     <div class="container">
       <div class="jumbotron">
-        <h1>Going old school techie.  Look out, Matt is on a role with mad GitHub, Twitter Bootstrap, JavaScript, and Ajax skills!</h1>
+        <h1>Going old school techie.  Made by Matt H with GitHub, Twitter Bootstrap, JavaScript, and Ajax skills!</h1>
       <a href="https://instagram.com/oauth/authorize/?client_id=f389f34a6e1f4674b0a27d015ef4294d&redirect_uri=http://matthughesmn.github.io/feedme/&response_type=token"><button class="btn btn-primary btn-lg">Log In with <i class="fa fa-instagram"></i> Instagram</button></a>
       </div>
       
@@ -27,7 +27,7 @@
   
     </div>  
   
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
       <!-- Latest compiled and minified JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     
@@ -46,11 +46,13 @@
                 for (var i = 0; i < data.length; i++) {
                   console.log(data[i]);
                   var image = data[i].images.standard_resolution.url;
-                  console.log('<img src='" + image = '"/>');
+                  console.log(image);
+                  imageHolder.append('<img src="' + image + '" class="img-circle" />');
                   imageHolder.append(data[i]);
                 }
                 
               }
+              
               
               function getData () {
                   $.ajax({
